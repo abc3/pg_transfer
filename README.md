@@ -52,6 +52,17 @@ make build
 
 ## Usage
 
+### Prerequisites
+
+Before transferring data, you need to copy the table schema to the destination database:
+
+```bash
+# Copy table schema (structure) to destination database
+pg_dump "$SOURCE_DB" -t pgbench_accounts --schema-only | psql "$DEST_DB"
+```
+
+**Note:** pg_transfer only transfers data, not table structure. The destination table must exist before running the transfer.
+
 ### Basic Usage
 ```bash
 # Simple table copy with default settings
